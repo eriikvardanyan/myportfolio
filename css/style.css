@@ -1,0 +1,680 @@
+/* Հիմնական փոփոխականներ */
+:root {
+    --bg-color: #f8f9fa;
+    --grid-line: #8a8a8a;
+    /* Much lighter grid */
+    --text-color: #333;
+    --white: #ffffff;
+    --accent: #2c3e50;
+    --shadow-light: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+
+    /* Layout */
+    --sidebar-width: 280px;
+}
+
+/* Զրոյացնել ստանդարտ ոճերը */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+img,
+ion-icon,
+a,
+button,
+time,
+span {
+    display: block;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    background: none;
+    font: inherit;
+}
+
+/* Հիմնական կարգավորումներ */
+html {
+    font-family: 'Inter', sans-serif;
+    /* Cleaner modern font */
+    scroll-behavior: smooth;
+}
+
+/* Մարմնի ոճերը և ֆոնը */
+body {
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Ֆոնային բանաձևերի անիմացիա */
+.formulas-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(px);
+}
+
+.formula {
+    position: absolute;
+    color: #000000;
+    opacity: 1;
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+}
+
+/* Main Layout Wrapper */
+/* Հիմնական դասավորությունը (Grid) */
+.main-content {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: 30px;
+    width: 1200px;
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Card Style Shared - Floating Effect */
+.sidebar,
+.main-container {
+    background: var(--white);
+    border-radius: 20px;
+    /* Rounded modern look */
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    /* Darker border */
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* SIDEBAR */
+/* Կողային վահանակ (Sidebar) */
+.sidebar {
+    max-height: max-content;
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+    text-align: center;
+}
+
+.sidebar-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-box {
+    background: var(--bg-color);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-content .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--accent);
+}
+
+.info-content .title {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+.separator {
+    width: 100%;
+    height: 3px;
+    background: var(--grid-line);
+    margin: 25px 0;
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-box {
+    position: relative;
+    background: var(--bg-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--accent);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info .contact-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+.contact-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.social-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-item .social-link {
+    font-size: 1.3rem;
+    color: #777;
+    transition: 0.3s;
+}
+
+.social-item .social-link:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.info_more-btn {
+    display: none;
+}
+
+/* MAIN CONTAINER (Right side) */
+/* Հիմնական բովանդակության տարածք */
+.main-container {
+    min-height: 80vh;
+}
+
+/* NavBar */
+/* Նավիգացիոն մենյու */
+.navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 20px 0 20px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.4);
+    border-left: 3px solid rgba(0, 0, 0, 0.4);
+    /* Creative rounded corner */
+    background: var(--bg-color);
+    /* Subtle contrast */
+    padding: 0 30px;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.navbar-list {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-link {
+    color: #777;
+    font-weight: 500;
+    padding: 20px 0;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+    color: var(--accent);
+}
+
+.navbar-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Articles / Pages */
+/* Էջերի (Tab-երի) ցուցադրում */
+article {
+    display: none;
+    margin-top: 60px;
+    /* Space for navbar */
+    animation: fade 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Elegant easing */
+}
+
+article.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* About Text */
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Timeline */
+/* Ժամանակագրություն (Timeline) */
+.timeline {
+    margin-bottom: 40px;
+}
+
+.timeline .title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    justify-content: start;
+}
+
+.timeline .icon-box {
+    box-shadow: none;
+    background: transparent;
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+.timeline-list {
+    margin-left: 20px;
+    border-left: 1px solid var(--grid-line);
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(44, 62, 80, 0.1);
+    /* Glow ring */
+}
+
+.timeline-item-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.timeline-text {
+    font-size: 0.95rem;
+    margin-top: 8px;
+    color: #666;
+}
+
+/* Projects Grid */
+/* Պրոյեկտների ցանց */
+.projects .project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-item>a {
+    display: block;
+    width: 100%;
+}
+
+.project-img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    aspect-ratio: 16/9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-item-icon-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.project-item:hover .project-img img {
+    transform: scale(1.1);
+}
+
+.project-item:hover .project-item-icon-box {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--accent);
+}
+
+.project-category {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Contact Form */
+/* Կապի ֆորմա */
+.input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-input {
+    background: var(--bg-color);
+    border: 1px solid transparent;
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.form-input:focus {
+    background: var(--white);
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+    margin-bottom: 25px;
+}
+
+.form-btn {
+    background: var(--accent);
+    color: var(--white);
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2);
+}
+
+/* Կոճակի հովեր էֆեկտ */
+.form-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Լողացող անիմացիայի կադրեր */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(30px, -50px) rotate(10deg);
+    }
+
+    66% {
+        transform: translate(-20px, -100px) rotate(-5deg);
+    }
+
+
+    100% {
+        transform: translate(0, -150px) rotate(0deg);
+    }
+}
+
+/* Ծառայությունների բաժնի ոճեր (Services) */
+.service {
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.service-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.service-item {
+    position: relative;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Lighter border for cards inside the main container */
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+/* Decoration line like the reference */
+.service-item::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-icon-box {
+    margin-bottom: 0;
+    font-size: 2.2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    /* Prevent icon shrinking */
+}
+
+.service-content-box {
+    text-align: left;
+}
+
+.service-item-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+    color: var(--text-color);
+}
+
+.service-item-text {
+    color: #555;
+    line-height: 1.6;
+
+    font-size: 0.95rem;
+}
+
+/* Հմտությունների և լեզուների բաժնի ոճեր */
+.skill {
+    margin-bottom: 30px;
+}
+
+.skill-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.skills-list {
+    background: var(--bg-color);
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-light);
+}
+
+.skills-item:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skills-item h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.skills-item data {
+    color: #666;
+    font-weight: 500;
+}
+
+.skill-progress-bg {
+    background: #e0e0e0;
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress-fill {
+    background: var(--accent);
+    height: 100%;
+    border-radius: inherit;
+    transition: width 1s ease-in-out;
+}
