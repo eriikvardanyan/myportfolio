@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createFormulas();
     initTabs();
     initFormulaMouseEffect();
-    initSidebarToggle(); 
+    initSidebarToggle();
 });
 
 /* Tab-երի փոփոխման ֆունկցիա ------------------------------------------------------------------------------------------------------ */
@@ -42,9 +42,9 @@ function createFormulas() {
     // ];
 
     const formulas = [
-        'Ա', 'Բ', 'Գ', 'Դ', 'Ե', 'Զ', 'Է', 'Ը', 'Թ', 'Ժ', 
-        'Ի', 'Լ', 'Խ', 'Ծ', 'Կ', 'Հ', 'Ձ', 'Ղ', 'Ճ', 'Մ', 
-        'Յ', 'Ն', 'Շ', 'Ո', 'Չ', 'Պ', 'Ջ', 'Ռ', 'Ս', 'Վ', 
+        'Ա', 'Բ', 'Գ', 'Դ', 'Ե', 'Զ', 'Է', 'Ը', 'Թ', 'Ժ',
+        'Ի', 'Լ', 'Խ', 'Ծ', 'Կ', 'Հ', 'Ձ', 'Ղ', 'Ճ', 'Մ',
+        'Յ', 'Ն', 'Շ', 'Ո', 'Չ', 'Պ', 'Ջ', 'Ռ', 'Ս', 'Վ',
         'Տ', 'Ր', 'Ց', 'Ւ', 'Փ', 'Ք', 'Օ', 'Ֆ', 'և',
         'F=ma', "𐎠𐎼𐎷𐎡𐎴", "♰֎",
     ];
@@ -133,6 +133,11 @@ function activateEasterEgg() {
     body.style.transition = "background 1s ease";
     body.style.background = "linear-gradient(180deg, rgba(255, 0, 21, 1) 0%, rgba(0, 81, 255, 1) 50%, rgba(255, 115, 0, 1) 100%)";
 
+    // Colors needed for the logic below
+    const armRed = '#D90012';
+    const armBlue = '#0033A0';
+    const armOrange = '#F2A800';
+
     formulas.forEach((f) => {
         f.style.transition = "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
 
@@ -141,7 +146,7 @@ function activateEasterEgg() {
         if (topPos <= 33) {
             f.style.color = armRed;
         } else if (topPos > 33 && topPos <= 66) {
-            f.style.color = armBlue; 
+            f.style.color = armBlue;
         } else {
             f.style.color = armOrange;
         }
@@ -190,10 +195,10 @@ themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
 
     if (body.classList.contains('dark-mode')) {
-        themeIcon.setAttribute('name', 'sunny-outline'); 
+        themeIcon.setAttribute('name', 'sunny-outline');
         localStorage.setItem('theme', 'dark');
     } else {
-        themeIcon.setAttribute('name', 'moon-outline'); 
+        themeIcon.setAttribute('name', 'moon-outline');
         localStorage.setItem('theme', 'light');
     }
 });
