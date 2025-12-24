@@ -1,7 +1,7 @@
 :root {
     --bg-color: #f8f9fa;
 
- 
+
     --grid-line: rgba(138, 138, 138, 0.1);
 
     --text-color: #333;
@@ -80,6 +80,7 @@ body.dark-mode {
     --accent: #F2A800;
     --grid-line: rgba(255, 255, 255, 0.08);
 }
+
 body.dark-mode .formula {
     color: #ffffff !important;
     opacity: 0.15;
@@ -111,6 +112,24 @@ body.dark-mode .theme-toggle {
         position: relative;
         left: 0;
         margin-right: 15px;
+    }
+
+    /* Mobile Padding Optimization */
+    body {
+        padding: 15px;
+        /* Minimal padding for mobile */
+    }
+
+    .main-content {
+        margin-top: 5px;
+        /* Reduce top gap */
+        padding: 0;
+    }
+
+    .sidebar,
+    .main-container {
+        padding: 20px;
+        /* Tighter internal spacing */
     }
 }
 
