@@ -821,3 +821,142 @@ textarea.form-input {
     border-radius: inherit;
     transition: width 1s ease-in-out;
 }
+
+/* --- ADAPTATION START --- */
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        padding: 0 10px;
+        gap: 20px;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        padding: 25px;
+    }
+
+    .sidebar-info {
+        flex-direction: row; /* Фото и имя в одну линию на планшетах */
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+    .avatar-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    .sidebar-info_more {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 0.5s ease-in-out;
+    }
+
+    .sidebar.active .sidebar-info_more {
+        max-height: 1000px;
+        opacity: 1;
+        margin-top: 20px;
+    }
+
+    .info_more-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--bg-color);
+        padding: 10px 15px;
+        border-radius: 12px;
+        color: var(--accent);
+        font-size: 0.9rem;
+        margin-left: auto; /* Кнопка уходит вправо */
+        box-shadow: var(--shadow-light);
+    }
+
+    .sidebar.active .info_more-btn ion-icon {
+        transform: rotate(180deg);
+    }
+}
+
+@media (max-width: 580px) {
+    body {
+        padding: 10px;
+        padding-bottom: 80px; /* Место для нижнего меню */
+    }
+
+    .main-container {
+        padding: 20px 15px;
+        min-height: auto;
+    }
+
+    /* Превращаем навигацию в фиксированное нижнее меню */
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        background: var(--white);
+        border-radius: 20px 20px 0 0;
+        border: none;
+        border-top: 1px solid var(--grid-line);
+        padding: 5px 10px;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        justify-content: center;
+    }
+
+    .navbar-list {
+        gap: 10px;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .navbar-link {
+        padding: 12px 5px;
+        font-size: 0.8rem;
+    }
+
+    .navbar-link.active::after {
+        bottom: 5px;
+    }
+
+    /* Кнопка переключения темы на мобильных */
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 101;
+        background: var(--white);
+        box-shadow: var(--shadow-light);
+    }
+
+    /* Сетки в одну колонку */
+    .service-list, 
+    .project-list, 
+    .input-wrapper {
+        grid-template-columns: 1fr !important;
+    }
+
+    .h2 {
+        font-size: 1.6rem;
+    }
+
+    article {
+        margin-top: 10px;
+    }
+
+    /* Корректировка сайдбара для совсем маленьких экранов */
+    .sidebar-info {
+        gap: 15px;
+    }
+
+    .info-content .name {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- ADAPTATION END --- */
