@@ -1,19 +1,18 @@
-/* Հիմնական փոփոխականներ */
 :root {
     --bg-color: #f8f9fa;
-    --grid-line: #8a8a8a;
-    /* Much lighter grid */
+
+ 
+    --grid-line: rgba(138, 138, 138, 0.1);
+
     --text-color: #333;
     --white: #ffffff;
     --accent: #2c3e50;
     --shadow-light: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
 
-    /* Layout */
     --sidebar-width: 280px;
 }
 
-/* Զրոյացնել ստանդարտ ոճերը */
 * {
     margin: 0;
     padding: 0;
@@ -54,14 +53,11 @@ textarea {
     font: inherit;
 }
 
-/* Հիմնական կարգավորումներ */
 html {
     font-family: 'Inter', sans-serif;
-    /* Cleaner modern font */
     scroll-behavior: smooth;
 }
 
-/* Մարմնի ոճերը և ֆոնը */
 body {
     background-color: var(--bg-color);
     background-image:
@@ -77,62 +73,107 @@ body {
     align-items: flex-start;
 }
 
-/* Ֆոնային բանաձևերի անիմացիա */
+body.dark-mode {
+    --bg-color: #121212;
+    --white: #1e1e1e;
+    --text-color: #ffffff;
+    --accent: #F2A800;
+    --grid-line: rgba(255, 255, 255, 0.08);
+}
+body.dark-mode .formula {
+    color: #ffffff !important;
+    opacity: 0.15;
+}
+
+body.dark-mode .h2,
+body.dark-mode .about-text p,
+body.dark-mode .timeline-item-title,
+body.dark-mode .service-item-title,
+body.dark-mode .service-item-text,
+body.dark-mode .contact-title,
+body.dark-mode .contact-link {
+    color: #ffffff !important;
+}
+
+body.dark-mode .sidebar,
+body.dark-mode .main-container,
+body.dark-mode .navbar {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .theme-toggle {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 580px) {
+    .theme-toggle {
+        position: relative;
+        left: 0;
+        margin-right: 15px;
+    }
+}
+
 .formulas-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
-    z-index: -1;
+    z-index: 1;
     overflow: hidden;
-    filter: blur(px);
 }
 
 .formula {
     position: absolute;
-    color: #000000;
-    opacity: 1;
+    color: #000000 !important;
+    font-weight: bold;
     font-family: 'Times New Roman', serif;
     font-style: italic;
+    white-space: nowrap;
+    z-index: 2;
+    background: transparent;
+    pointer-events: none;
+
+    display: inline-block;
+    will-change: margin, opacity;
 }
 
-/* Main Layout Wrapper */
-/* Հիմնական դասավորությունը (Grid) */
 .main-content {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     gap: 30px;
-    width: 1200px;
-    max-width: 100%;
-    margin-top: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
 @media (max-width: 1024px) {
     .main-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
     }
 }
 
-/* Card Style Shared - Floating Effect */
 .sidebar,
 .main-container {
     background: var(--white);
     border-radius: 20px;
-    /* Rounded modern look */
     padding: 30px;
     box-shadow: var(--shadow-light);
     border: 3px solid rgba(0, 0, 0, 0.4);
-    /* Darker border */
     position: relative;
     z-index: 10;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* SIDEBAR */
-/* Կողային վահանակ (Sidebar) */
 .sidebar {
     max-height: max-content;
     height: fit-content;
@@ -226,6 +267,7 @@ body {
 .contact-link {
     font-size: 0.9rem;
     font-weight: 500;
+    word-break: break-all;
 }
 
 .social-list {
@@ -249,14 +291,67 @@ body {
     display: none;
 }
 
-/* MAIN CONTAINER (Right side) */
-/* Հիմնական բովանդակության տարածք */
+@media (max-width: 1024px) {
+    .sidebar {
+        padding-top: 25px;
+    }
+
+    .sidebar-info_more {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 0.5s ease-in-out;
+    }
+
+    .sidebar.active .sidebar-info_more {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .info_more-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--bg-color);
+        padding: 10px 15px;
+        border-radius: 12px;
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 15px;
+        box-shadow: var(--shadow-light);
+        transition: 0.3s;
+    }
+
+    .info_more-btn ion-icon {
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active .info_more-btn ion-icon {
+        transform: rotate(180deg);
+    }
+}
+
+
 .main-container {
     min-height: 80vh;
 }
 
 /* NavBar */
 /* Նավիգացիոն մենյու */
+/* .navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 20px 0 20px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.4);
+    border-left: 3px solid rgba(0, 0, 0, 0.4);
+    background: var(--bg-color);
+    padding: 0 30px;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.02);
+} */
+
 .navbar {
     position: absolute;
     top: 0;
@@ -264,11 +359,63 @@ body {
     border-radius: 0 20px 0 20px;
     border-bottom: 3px solid rgba(0, 0, 0, 0.4);
     border-left: 3px solid rgba(0, 0, 0, 0.4);
-    /* Creative rounded corner */
     background: var(--bg-color);
-    /* Subtle contrast */
     padding: 0 30px;
     box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    background: var(--bg-color);
+    color: var(--accent);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 580px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .theme-toggle {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 580px) {
+    .navbar {
+        width: 100%;
+        position: static;
+        border-radius: 0;
+        border-left: none;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .navbar-list {
+        justify-content: center;
+        gap: 15px;
+    }
 }
 
 .navbar-list {
@@ -301,14 +448,16 @@ body {
     border-radius: 2px;
 }
 
-/* Articles / Pages */
-/* Էջերի (Tab-երի) ցուցադրում */
 article {
     display: none;
     margin-top: 60px;
-    /* Space for navbar */
     animation: fade 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    /* Elegant easing */
+}
+
+@media (max-width: 580px) {
+    article {
+        margin-top: 20px;
+    }
 }
 
 article.active {
@@ -346,7 +495,6 @@ article.active {
     border-radius: 2px;
 }
 
-/* About Text */
 .about-text p {
     margin-bottom: 20px;
     font-size: 1.05rem;
@@ -354,8 +502,6 @@ article.active {
     line-height: 1.8;
 }
 
-/* Timeline */
-/* Ժամանակագրություն (Timeline) */
 .timeline {
     margin-bottom: 40px;
 }
@@ -397,7 +543,6 @@ article.active {
     background: var(--accent);
     border-radius: 50%;
     box-shadow: 0 0 0 5px rgba(44, 62, 80, 0.1);
-    /* Glow ring */
 }
 
 .timeline-item-title {
@@ -412,11 +557,9 @@ article.active {
     color: #666;
 }
 
-/* Projects Grid */
-/* Պրոյեկտների ցանց */
 .projects .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
 }
 
@@ -475,13 +618,17 @@ article.active {
     color: #888;
 }
 
-/* Contact Form */
-/* Կապի ֆորմա */
 .input-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
     margin-bottom: 25px;
+}
+
+@media (max-width: 580px) {
+    .input-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
 .form-input {
@@ -518,12 +665,10 @@ textarea.form-input {
     box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2);
 }
 
-/* Կոճակի հովեր էֆեկտ */
 .form-btn:hover {
     transform: translateY(-2px);
 }
 
-/* Լողացող անիմացիայի կադրեր */
 @keyframes float {
     0% {
         transform: translate(0, 0) rotate(0deg);
@@ -537,13 +682,11 @@ textarea.form-input {
         transform: translate(-20px, -100px) rotate(-5deg);
     }
 
-
     100% {
         transform: translate(0, -150px) rotate(0deg);
     }
 }
 
-/* Ծառայությունների բաժնի ոճեր (Services) */
 .service {
     margin-bottom: 35px;
     margin-top: 35px;
@@ -574,22 +717,11 @@ textarea.form-input {
     border-radius: 14px;
     box-shadow: var(--shadow-light);
     border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Lighter border for cards inside the main container */
     display: flex;
     align-items: flex-start;
     gap: 18px;
     transition: 0.3s;
     z-index: 1;
-}
-
-/* Decoration line like the reference */
-.service-item::before {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
-    border-radius: inherit;
-    z-index: -1;
 }
 
 .service-item:hover {
@@ -598,15 +730,9 @@ textarea.form-input {
 }
 
 .service-icon-box {
-    margin-bottom: 0;
     font-size: 2.2rem;
     color: var(--accent);
     flex-shrink: 0;
-    /* Prevent icon shrinking */
-}
-
-.service-content-box {
-    text-align: left;
 }
 
 .service-item-title {
@@ -619,11 +745,9 @@ textarea.form-input {
 .service-item-text {
     color: #555;
     line-height: 1.6;
-
     font-size: 0.95rem;
 }
 
-/* Հմտությունների և լեզուների բաժնի ոճեր */
 .skill {
     margin-bottom: 30px;
 }
