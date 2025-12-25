@@ -129,42 +129,35 @@ document.addEventListener('keydown', (e) => {
 function activateEasterEgg() {
     const body = document.body;
     const formulas = document.querySelectorAll('.formula');
+    const overlay = document.getElementById('easter-egg-overlay');
+    const music = document.getElementById('easter-egg-music');
+    
+    const armColors = ['#D90012', '#0033A0', '#F2A800'];
 
-    body.style.transition = "background 1s ease";
-    body.style.background = "linear-gradient(180deg, rgba(255, 0, 21, 1) 0%, rgba(0, 81, 255, 1) 50%, rgba(255, 115, 0, 1) 100%)";
+    overlay.style.display = 'flex';
+    music.play().catch(e => console.log("Музыка не смогла запуститься автоматически"));
 
-    // Colors needed for the logic below
-    const armRed = '#D90012';
-    const armBlue = '#0033A0';
-    const armOrange = '#F2A800';
-
-    formulas.forEach((f) => {
-        f.style.transition = "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-
-        const topPos = parseFloat(f.style.top);
-
-        if (topPos <= 33) {
-            f.style.color = armRed;
-        } else if (topPos > 33 && topPos <= 66) {
-            f.style.color = armBlue;
-        } else {
-            f.style.color = armOrange;
-        }
-
-        f.style.transform = "scale(2.5) rotate(10deg)";
-        f.style.opacity = "0.9";
-        f.style.fontWeight = "bold";
+    body.style.background = "linear-gradient(180deg, rgba(255, 0, 21, 1), rgba(0, 81, 255, 1), rgba(255, 145, 0, 1))";
+    
+    formulas.forEach((f, index) => {
+        f.style.color = armColors[index % 3];
+        f.style.transform = "scale(3) rotate(20deg)";
+        f.style.opacity = "1";
     });
 
     setTimeout(() => {
-        body.style.background = "";
+        overlay.style.display = 'none';
+        music.pause();
+        music.currentTime = 0; 
+
+        body.style.background = ""; 
         formulas.forEach(f => {
-            f.style.transform = "";
+            f.style.transform = ""; 
             f.style.color = body.classList.contains('dark-mode') ? "#ffffff" : "#000000";
-            f.style.opacity = "0.2";
+            f.style.opacity = "0.7";
         });
-        easterEggCode = "";
-    }, 5000);
+        easterEggCode = ""; 
+    }, 15000); 
 }
 
 /* --- SIDEBAR TOGGLE FOR MOBILE ------------------------------------------------------------------------------------------------------ --- */
@@ -202,3 +195,4 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
