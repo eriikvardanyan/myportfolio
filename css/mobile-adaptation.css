@@ -311,7 +311,47 @@
         gap: 15px !important;
     }
 
+@media (max-width: 384px) {
+    /* Прячем текст */
+    .sidebar .info_more-btn span { 
+        display: none !important; 
+    } 
+
+    .sidebar .info_more-btn {
+        /* Устанавливаем фиксированный размер, чтобы получился квадрат/круг */
+        width: 45px !important;
+        height: 45px !important;
+        
+        /* ВКЛЮЧАЕМ ЦЕНТРИРОВАНИЕ */
+        display: flex !important;
+        justify-content: center !important; /* Центр по горизонтали */
+        align-items: center !important;     /* Центр по вертикали */
+        
+        /* Убираем лишние отступы, которые могут смещать иконку */
+        padding: 0 !important;
+        margin: 0 !important;
+        
+        /* Позиционирование в углу */
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        
+        /* Дизайн */
+        border-radius: 0 18px 0 18px !important;
+        background: var(--bg-color); /* Или var(--accent) если хочешь выделить */
+    }
+
+    .sidebar .info_more-btn ion-icon {
+        /* Обнуляем маржины у самой иконки на случай, если они есть */
+        margin: 0 !important;
+        font-size: 1.4rem !important;
+        /* Убедимся, что иконка ведет себя как блочный элемент внутри флекса */
+        display: block !important; 
+    }
+}
+
     .navbar-link {
         font-size: 0.8rem !important;
     }
+
 }
