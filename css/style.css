@@ -9,7 +9,6 @@
     --accent: #2c3e50;
     --shadow-light: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-
     --sidebar-width: 280px;
 }
 
@@ -61,8 +60,8 @@ html {
 body {
     background-color: var(--bg-color);
     background-image:
-        linear-gradient(var(--grid-line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 20px 20px;
     color: var(--text-color);
     line-height: 1.6;
@@ -71,9 +70,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
+    -webkit-user-select: none;  /* Safari */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
 }
-
 
 body.dark-mode {
     --bg-color: #121212;
@@ -108,8 +108,6 @@ body.dark-mode .navbar {
 body.dark-mode .theme-toggle {
     border-color: rgba(255, 255, 255, 0.2);
 }
-
-/* Previous mobile padding optimization removed; overriden by Adaptation block at end of file */
 
 .formulas-background {
     position: fixed;
@@ -159,8 +157,6 @@ body.dark-mode .theme-toggle {
     }
 }
 
-/* LAPTOP LAYOUT Adaptation (1024px - 1250px) */
-/* Matches codePort 950px centered layout */
 @media (min-width: 1024px) and (max-width: 1250px) {
     .main-content {
         width: 950px;
@@ -174,12 +170,9 @@ body.dark-mode .theme-toggle {
         margin-bottom: 30px;
     }
 
-    /* Ensure sidebar toggle remains visible/functional in this range if needed */
-    /* CodePort usually keeps sidebar collapsible here? Yes. */
     .sidebar {
         max-height: 112px;
         overflow: hidden;
-        /* Position static to stack */
         position: static;
     }
 
@@ -189,7 +182,6 @@ body.dark-mode .theme-toggle {
 
     .info_more-btn {
         display: flex;
-        /* Show toggle */
         top: 20px;
         right: 20px;
     }
@@ -366,24 +358,9 @@ body.dark-mode .theme-toggle {
     }
 }
 
-
 .main-container {
     min-height: 80vh;
 }
-
-/* NavBar */
-/* Նավիգացիոն մենյու */
-/* .navbar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 0 20px 0 20px;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.4);
-    border-left: 3px solid rgba(0, 0, 0, 0.4);
-    background: var(--bg-color);
-    padding: 0 30px;
-    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.02);
-} */
 
 .navbar {
     position: absolute;
@@ -401,29 +378,73 @@ body.dark-mode .theme-toggle {
     padding: 0 20px;
 }
 
-.theme-toggle {
+.theme-switch-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 10px;
-    background: var(--bg-color);
-    color: var(--accent);
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+}
+
+.theme-checkbox {
+    display: none;
+}
+
+.theme-label {
+    width: 60px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50px;
+    position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    transition: background-color 0.4s ease;
 }
 
-.theme-toggle:hover {
-    background: var(--accent);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.theme-label .ball {
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Legacy mobile navbar styles removed in favor of Adaptation fixed-bottom layout */
+.theme-label ion-icon {
+    font-size: 14px;
+    z-index: 1;
+}
+
+.icon-moon {
+    color: #f1c40f;
+}
+
+.icon-sun {
+    color: #f39c12;
+    opacity: 0;
+}
+
+.theme-checkbox:checked+.theme-label {
+    background-color: var(--accent);
+}
+
+.theme-checkbox:checked+.theme-label .ball {
+    transform: translateX(30px);
+}
+
+.theme-checkbox:checked+.theme-label .icon-moon {
+    opacity: 0;
+}
+
+.theme-checkbox:checked+.theme-label .icon-sun {
+    opacity: 1;
+}
 
 .navbar-list {
     display: flex;
@@ -886,74 +907,64 @@ textarea.form-input {
         margin-top: 20px;
     }
 
-    /* BOTTOM NAVBAR (Fixed) */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.theme-toggle {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 1024px) {
     .navbar {
         position: fixed;
         bottom: 0;
         left: 0;
-        right: 0;
-        top: auto;
         width: 100%;
-        background: var(--bg-color);
-        border-radius: 12px 12px 0 0;
-        border: 1px solid var(--grid-line);
+        height: 70px;
+        background: var(--white);
+        border-radius: 20px 20px 0 0;
+        border-top: 1px solid var(--grid-line);
         box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(10px);
+        padding: 0 10px;
+        justify-content: space-around;
+        z-index: 1000;
     }
 
     .navbar-list {
         display: flex;
         justify-content: space-around;
-        width: 100%;
-        padding: 0;
+        align-items: center;
+        width: 80%;
         gap: 0;
     }
 
-    .navbar-link {
-        font-size: 0.8rem;
-        padding: 10px;
-    }
-
-    .navbar-link.active::after {
-        bottom: 0;
-    }
-
     .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 200;
+        width: 45px;
+        height: 45px;
         background: var(--bg-color);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        box-shadow: var(--shadow-light);
+        border: none;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
     }
 }
 
-@media (min-width: 1024px) {
-
-    .info_more-btn {
-        display: none;
-    }
-
-    .sidebar-info_more {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .navbar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: auto;
-        border-radius: 0 20px 0 20px;
-    }
+body.dark-mode .navbar {
+    background: #1e1e1e;
+    border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 580px) {
@@ -1087,4 +1098,76 @@ textarea.form-input {
     100% {
         transform: scale(1);
     }
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: var(--border-gradient-onyx);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    cursor: pointer;
+    box-shadow: var(--shadow-2);
+    border: 1px solid var(--jet);
+    transition: var(--transition-1);
+}
+
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.theme-toggle ion-icon {
+    font-size: 20px;
+    color: var(--orange-yellow-crayola);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 580px) {
+    .theme-toggle {
+        top: auto;
+        bottom: 85px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--white);
+    color: var(--accent);
+    padding: 15px 25px;
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    box-shadow: var(--shadow-hover);
+    font-weight: bold;
+    z-index: 2000;
+    transform: translateY(150%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast.show {
+    transform: translateY(0);
+}
+
+body.dark-mode .toast {
+    background: #1e1e1e;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--accent);
 }
