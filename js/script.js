@@ -26,7 +26,6 @@ function initTabs() {
     });
 }
 
-
 /* Ֆոնային բանաձևերի գեներացման ֆունկցիա ------------------------------------------------------------------------------------------------------ */
 function createFormulas() {
     const bgContainer = document.querySelector('.formulas-background');
@@ -46,7 +45,7 @@ function createFormulas() {
         'Ի', 'Լ', 'Խ', 'Ծ', 'Կ', 'Հ', 'Ձ', 'Ղ', 'Ճ', 'Մ',
         'Յ', 'Ն', 'Շ', 'Ո', 'Չ', 'Պ', 'Ջ', 'Ռ', 'Ս', 'Վ',
         'Տ', 'Ր', 'Ց', 'Ւ', 'Փ', 'Ք', 'Օ', 'Ֆ', 'և',
-        'F=ma', "𐎠𐎼𐎷𐎡𐎴", "♰֎",
+        'F=ma', "♰", "֍", "֎", "֏",
     ];
 
     const formulaCount = 500;
@@ -131,14 +130,14 @@ function activateEasterEgg() {
     const formulas = document.querySelectorAll('.formula');
     const overlay = document.getElementById('easter-egg-overlay');
     const music = document.getElementById('easter-egg-music');
-    
+
     const armColors = ['#D90012', '#0033A0', '#F2A800'];
 
     overlay.style.display = 'flex';
     music.play().catch(e => console.log("Музыка не смогла запуститься автоматически"));
 
     body.style.background = "linear-gradient(180deg, rgba(255, 0, 21, 1), rgba(0, 81, 255, 1), rgba(255, 145, 0, 1))";
-    
+
     formulas.forEach((f, index) => {
         f.style.color = armColors[index % 3];
         f.style.transform = "scale(3) rotate(20deg)";
@@ -148,16 +147,16 @@ function activateEasterEgg() {
     setTimeout(() => {
         overlay.style.display = 'none';
         music.pause();
-        music.currentTime = 0; 
+        music.currentTime = 0;
 
-        body.style.background = ""; 
+        body.style.background = "";
         formulas.forEach(f => {
-            f.style.transform = ""; 
+            f.style.transform = "";
             f.style.color = body.classList.contains('dark-mode') ? "#ffffff" : "#000000";
             f.style.opacity = "0.7";
         });
-        easterEggCode = ""; 
-    }, 15000); 
+        easterEggCode = "";
+    }, 15000);
 }
 
 /* --- SIDEBAR TOGGLE FOR MOBILE ------------------------------------------------------------------------------------------------------ --- */
@@ -172,27 +171,23 @@ function initSidebarToggle() {
     }
 }
 
-
-
-/* --- մութ վերսիա -------------------------------------------------------------------------------------------------- --- */
+/* --- մութ վերսիա (Dark/Light Mode) ---------------------------------------------------------------------------------- --- */
 const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
 
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
-    themeIcon.setAttribute('name', 'sunny-outline');
+    themeToggle.checked = true; 
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-
-    if (body.classList.contains('dark-mode')) {
-        themeIcon.setAttribute('name', 'sunny-outline');
+themeToggle.addEventListener('change', () => {
+    if (themeToggle.checked) {
+        body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
     } else {
-        themeIcon.setAttribute('name', 'moon-outline');
+        body.classList.remove('dark-mode');
         localStorage.setItem('theme', 'light');
     }
 });
 
+/* --- gmail ---------------------------------------------------------------------------------- --- */
