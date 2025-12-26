@@ -311,6 +311,76 @@
         gap: 15px !important;
     }
 
+    .navbar-link {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    /* 1. Настройка тела страницы */
+    body {
+        padding: 10px !important;
+        padding-bottom: 85px !important; /* Увеличиваем место под навбар */
+    }
+
+    /* 2. Компактный Navbar (iPhone Style) */
+    .navbar {
+        width: 94% !important; /* Больше ширины на узком экране */
+        height: 55px !important; /* Чуть ниже высота */
+        bottom: 15px !important;
+        padding: 0 5px !important;
+    }
+
+    .navbar-list {
+        gap: 5px !important; /* Уменьшаем расстояние между кнопками */
+    }
+
+    .navbar-link {
+        font-size: 0.7rem !important; /* Уменьшаем текст */
+        padding: 5px !important;
+    }
+
+    /* 3. Кнопка "Show Contacts" (исправляем вылет за экран) */
+    .info_more-btn {
+        top: 0 !important;
+        right: 0 !important;
+        padding: 8px 10px !important;
+        font-size: 0.8rem !important;
+        border-radius: 0 18px 0 12px !important;
+        max-width: 130px; /* Ограничиваем ширину */
+    }
+
+    .info_more-btn span {
+        display: block !important; /* Если текст не влезает, можно скрыть через display: none */
+        font-size: 10px;
+    }
+
+    /* 4. Сайдбар и Аватар */
+    .sidebar-info {
+        gap: 12px !important;
+    }
+
+    .avatar-box {
+        width: 50px !important; /* Еще меньше аватар */
+        height: 50px !important;
+        border-radius: 12px !important;
+    }
+
+    .info-content .name {
+        font-size: 1.1rem !important;
+    }
+
+    /* 5. Карточки сервисов и проектов */
+    .service-item {
+        padding: 15px !important;
+        gap: 10px !important;
+    }
+    
+    .h2 {
+        font-size: 1.4rem !important;
+    }
+}
+
 @media (max-width: 384px) {
     /* Прячем текст */
     .sidebar .info_more-btn span { 
@@ -348,10 +418,4 @@
         /* Убедимся, что иконка ведет себя как блочный элемент внутри флекса */
         display: block !important; 
     }
-}
-
-    .navbar-link {
-        font-size: 0.8rem !important;
-    }
-
 }
