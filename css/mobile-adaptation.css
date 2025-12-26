@@ -411,11 +411,10 @@
         background: var(--bg-color); /* Или var(--accent) если хочешь выделить */
     }
 
-    .sidebar .info_more-btn ion-icon {
-        /* Обнуляем маржины у самой иконки на случай, если они есть */
-        margin: 0 !important;
-        font-size: 1.4rem !important;
-        /* Убедимся, что иконка ведет себя как блочный элемент внутри флекса */
-        display: block !important; 
-    }
+    .sidebar.active .info_more-btn ion-icon {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease;
 }
+}
+
+
