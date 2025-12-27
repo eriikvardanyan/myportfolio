@@ -1,435 +1,460 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-    <!-- Էջի գլխամաս -->
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/img/48540.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile-adaptation.css">
-    <link rel="icon" type="image/x-icon" href="./assets/img/48540.png">
-
-    <!-- Իկոնկեկ  -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Ֆոնային անիմացիայի բլոկ -->
+
+  <!-- MAIN ---------------------------------------------------------------------------------------------------------------------->
+  <main>
+
     <div class="formulas-background"> </div>
 
-    <!-- Main Հիմնական -->
-    <main class="main-content">
+    <!-- SIDEBAR ------------------------------------------------------------------------------------------------------------------>
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="./assets/img/es.jpg" alt="Erik Vardanyan" width="80">
+        </figure>
 
-        <!-- Կողային վահանակ (Sidebar) -->
-        <aside class="sidebar" data-sidebar>
-            <!-- Վերևի հատված -->
-            <div class="sidebar-info">
-                <figure class="avatar-box">
-                    <img src="assets/img/es.jpg" alt="Profile Picture" width="80">
-                </figure>
+        <div class="info-content">
+          <h1 class="name" title="Erik Vardanyan">Erik Vardanyan</h1>
 
-                <div class="info-content">
-                    <h1 class="name" title="Имя Фамилия">Erik Vardanyan</h1>
-                    <p class="title">Front-End Developer</p>
-                </div>
-
-                <button class="info_more-btn" data-sidebar-btn>
-                    <span>Show Contacts</span>
-                    <ion-icon name="chevron-down"></ion-icon>
-                </button>
-            </div>
-
-            <!-- Ներքևի հատված -->
-            <div class="sidebar-info_more">
-                <div class="separator"></div>
-
-                <ul class="contacts-list">
-                    <!-- էլ. հասցիկ -->
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Email</p>
-                            <a href="https://mail.google.com/mail/u/0/#inbox"
-                                class="contact-link">eriikvardanyan@gmail.com</a>
-                        </div>
-                    </li>
-
-                    <!-- հեռախոսահամար -->
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <ion-icon name="phone-portrait-outline"></ion-icon>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Phone</p>
-                            <a href="tel:+1234567890" class="contact-link">+374 04-60-07</a>
-                        </div>
-                    </li>
-
-                    <!-- ծնված վախտ -->
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <ion-icon name="calendar-outline"></ion-icon>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Date of birth</p>
-                            <time datetime="1995-06-23">22 / 01 / 2004</time>
-                        </div>
-                    </li>
-
-                    <!-- լոկացիա -->
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <ion-icon name="location-outline"></ion-icon>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Location</p>
-                            <address>Armenia, Yerevan</address>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="separator"></div>
-
-                <!-- Հղումներ անձնական էջերին -->
-                <ul class="social-list">
-                    <li class="social-item">
-                        <a href="https://github.com/eriikvardanyan" class="social-link">
-                            <ion-icon name="logo-github"></ion-icon>
-                        </a>
-                    </li>
-                    <li class="social-item">
-                        <a href="https://www.instagram.com/eriikvardanyan?igsh=ZWZkcnlxa2ppY2py&utm_source=qr"
-                            class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-                    <li class="social-item">
-                        <a href="https://www.facebook.com/eriikvardanyan" class="social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-                    <li class="social-item">
-                        <a href="https://web.telegram.org/k/#@eriikvardanyan" class="social-link">
-                            <ion-icon name="paper-plane-outline"></ion-icon>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Հիմնական բովանդակություն -->
-        <div class="main-container">
-
-            <!-- Navbar -->
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <button class="navbar-link active" data-nav-link>About</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Resume</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Portfolio</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Contact</button>
-                    </li>
-                </ul>
-
-                <div class="theme-switch-wrapper">
-                    <input type="checkbox" id="theme-toggle" class="theme-checkbox">
-                    <label for="theme-toggle" class="theme-label">
-                        <ion-icon name="moon-outline" class="icon-moon"></ion-icon>
-                        <ion-icon name="sunny-outline" class="icon-sun"></ion-icon>
-                        <div class="ball"></div>
-                    </label>
-                </div>
-            </nav>
-
-            <!-- "About" Section -->
-            <article class="about active" data-page="about">
-                <header>
-                    <h2 class="h2 article-title">About me</h2>
-                </header>
-
-                <!-- Իմ մասին -->
-                <section class="about-text">
-                    <p>
-                        I am a motivated and results-driven professional with a strong commitment to
-                        continuous growth and self-improvement. I actively seek new challenges that allow
-                        me to learn, adapt, and contribute meaningfully to the goals of an organization.
-                        I bring a disciplined work ethic, high adaptability, and the ability to quickly
-                        acquire and apply new skills in dynamic environments.
-
-                    </p>
-                    <p>
-                        I possess strong interpersonal and communication skills, enabling me to collaborate
-                        effectively with diverse teams and stakeholders. I am comfortable working independently
-                        with minimal supervision, as well as thriving in fast-paced, team-oriented settings.
-                        I am known for my reliability, sense of responsibility, and ability to remain focused
-                        and productive under pressure, approaching tasks with an analytical mindset and attention
-                        to detail while maintaining a broader strategic perspective.
-                    </p>
-                </section>
-
-                <!-- Ինչով եմ ես զբաղվում (Ծառայություններ) -->
-                <section class="service">
-                    <h3 class="h3 service-title">What I'm doing</h3>
-
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <ion-icon name="phone-portrait-outline"></ion-icon>
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Mobile apps</h4>
-                                <p class="service-item-text">
-                                    Professional development of applications for iOS and Android.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <ion-icon name="code-slash-outline"></ion-icon>
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Web development</h4>
-                                <p class="service-item-text">
-                                    High-quality development of sites at the professional level.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <ion-icon name="camera-outline"></ion-icon>
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Photography</h4>
-                                <p class="service-item-text">
-                                    I make high-quality photos of any category at a professional level.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- ռեզյումենտ -->
-            <article class="resume" data-page="resume">
-                <header>
-                    <h2 class="h2 article-title">Resume</h2>
-                </header>
-
-                <!-- մասնագիտություններ և սովորել -->
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
-                        <h3 class="h3">Education</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">General Secondary School</h4>
-                            <span>2010 — 2019</span>
-                            <p class="timeline-text">Completed secondary education</p>
-                        </li>
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">College</h4>
-                            <span>2019 — 2023</span>
-                            <p class="timeline-text">As a programmer</p>
-                        </li>
-                    </ol>
-                </section>
-
-                <!-- բանակ -->
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="skull-outline"></ion-icon></div>
-                        <h3 class="h3">Military service</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Army</h4>
-                            <span>2023 — 2025</span>
-                            <p class="timeline-text">As a Sergeant</p>
-                        </li>
-                    </ol>
-                </section>
-
-                <!-- աշխատանքի փորձ -->
-                <!-- <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="briefcase-outline"></ion-icon></div>
-                        <h3 class="h3">Work experience</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">-</h4>
-                            <span>-</span>
-                            <p class="timeline-text">-</p>
-                        </li>
-                    </ol>
-                </section> -->
-
-                <br>
-
-                <!-- Իմ հմտությունները (Skills) -->
-                <section class="skill">
-                    <h3 class="h3 skill-title">My skills</h3>
-                    <ul class="skills-list content-card">
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">HTML, CSS</h5>
-                                <data value="95">95%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 95%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">JavaScript</h5>
-                                <data value="80">80%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 70%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">React, Native</h5>
-                                <data value="60">60%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 60%;"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-                <br>
-
-                <!-- Լեզուների իմացություն -->
-                <section class="skill">
-                    <h3 class="h3 skill-title">Languages</h3>
-                    <ul class="skills-list content-card">
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">Armenian</h5>
-                                <data value="100">100%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 100%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">Russian</h5>
-                                <data value="95">95%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 85%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="h5">English</h5>
-                                <data value="60">60%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 50%;"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-            </article>
-
-            <!-- "Portfolio" Section -->
-            <article class="portfolio" data-page="portfolio">
-                <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
-                </header>
-
-                <section class="projects">
-                    <ul class="project-list">
-                        <li class="project-item active">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <!-- Placeholder for project image -->
-                                    <img src="./assets/img/The_Beatles_Photo1.png" alt="The Beatles" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">live with The Beatles</h3>
-                                <p class="project-category">Web-site</p>
-                            </a>
-                        </li>
-                        <li class="project-item active">
-                            <a href="#">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <!-- Placeholder for project image -->
-                                    <img src="./assets/img/images.jpg" alt="Quantum" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Tolkien's Legendarium</h3>
-                                <p class="project-category">Web-site</p>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- "Contact" Section -->
-            <article class="contact" data-page="contact">
-                <header>
-                    <h2 class="h2 article-title">Contact</h2>
-                </header>
-
-                <!-- <section class="mapbox">
-                    <figure>
-                        <div
-                            style="width:100%; height:200px; background:#ddd; display:flex; align-items:center; justify-content:center;">
-                            Map Placeholder
-                        </div>
-                    </figure>
-                </section> -->
-
-                <section class="contact-form">
-                    <h3 class="h3 form-title">Contact Form</h3>
-                
-                    <form action="https://formspree.io/f/mqakeolg" method="POST" class="form" data-form>
-                        <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-                            <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-                        </div>
-
-                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-                        <button class="form-btn" type="submit" disabled data-form-btn>
-                            <ion-icon name="paper-plane"></ion-icon>
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                </section>
-            </article>
+          <p class="title">Frontend developer</p>
         </div>
-    </main>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
 
-    <script src="js/script.js"></script>
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-link">eriikvardanyan@gmail.com</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+37494046007" class="contact-link">+374 9404-60-07</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Date of birth</p>
+              <time datetime="1982-06-23">22 / 01 / 2004</time>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Armenia, Yerevan</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="https://github.com/eriikvardanyan" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://www.instagram.com/eriikvardanyan?igsh=ZWZkcnlxa2ppY2py&utm_source=qr" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://www.facebook.com/eriikvardanyan" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://web.telegram.org/k/#@eriikvardanyan" class="social-link">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- #main-content -->
+    <div class="main-content">
+
+      <!-- #NAVBAR ---------------------------------------------------------------------------------------------------------------->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+          <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>blog</button>
+          </li> -->
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- #ABOUT ---------------------------------------------------------------------------------------------------------------->
+      <article class="about  active" data-page="about">
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+        <section class="about-text">
+          <p>
+            I am a motivated and results-driven professional with a strong commitment to
+            continuous growth and self-improvement. I actively seek new challenges that allow
+            me to learn, adapt, and contribute meaningfully to the goals of an organization.
+            I bring a disciplined work ethic, high adaptability, and the ability to quickly
+            acquire and apply new skills in dynamic environments.
+          </p>
+          <p>
+            I possess strong interpersonal and communication skills, enabling me to collaborate
+            effectively with diverse teams and stakeholders. I am comfortable working independently
+            with minimal supervision, as well as thriving in fast-paced, team-oriented settings.
+            I am known for my reliability, sense of responsibility, and ability to remain focused
+            and productive under pressure, approaching tasks with an analytical mindset and attention
+            to detail while maintaining a broader strategic perspective.
+          </p>
+        </section>
+
+        <!-- իմ մասին -->
+        <section class="service">
+          <h3 class="h3 service-title">What i'm doing</h3>
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="phone-portrait-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="code-slash-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile apps</h4>
+                <p class="service-item-text">
+                  Professional development of applications for iOS and Android.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="camera-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+                <p class="service-item-text">
+                  I make high-quality photos of any category at a professional level.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- #RESUME ---------------------------------------------------------------------------------------------------------------->
+      <article class="resume" data-page="resume">
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+        <!-- սովորած -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Education</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">General Secondary School</h4>
+              <span>2010 — 2019</span>
+              <p class="timeline-text">
+                Completed secondary education
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">College</h4>
+              <span>2019 — 2023</span>
+              <p class="timeline-text">
+                As a programmer
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- բանակ -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="skull-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Military service</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Armenian Army</h4>
+              <span>2023 — 2025</span>
+              <p class="timeline-text">
+                As a Sergeant
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- աշխատանքային փորձ -->
+        <!-- <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Experience</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Creative director</h4>
+              <span>2015 — Present</span>
+              <p class="timeline-text">
+                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
+                molestias
+                exceptur.
+              </p>
+            </li>                    
+          </ol>
+        </section> -->
+
+        <!-- հմտություններ -->
+        <section class="skill">
+          <h3 class="h3 skills-title">My skills</h3>
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">HTML, CSS</h5>
+                <data value="95">95%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">JavaScript</h5>
+                <data value="80">80%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">React, Native</h5>
+                <data value="60">60%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- լեզուներ -->
+        <section class="skill">
+          <h3 class="h3 skills-title" style="margin-top: 2rem;">Languages</h3>
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Armenian</h5>
+                <data value="100">100%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 100%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Russian</h5>
+                <data value="95">95%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">English</h5>
+                <data value="60">60%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- #PORTFOLIO ---------------------------------------------------------------------------------->
+
+      <article class="portfolio" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+        <section class="projects">
+          <ul class="project-list">
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/img/The_Beatles_Photo1.png" alt="The Beatles" loading="lazy">
+                </figure>
+                <h3 class="project-title">live with The Beatles</h3>
+                <p class="project-category">Web-site</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/img/images.jpg" alt="Tolkien's Legendarium" loading="lazy">
+                </figure>
+                <h3 class="project-title">Tolkien's Legendarium</h3>
+                <p class="project-category">Web-site</p>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- #BLOG -->
+      <!-- <article class="blog" data-page="blog">
+        <header>
+          <h2 class="h2 article-title">Photos</h2>
+        </header>
+        <section class="blog-posts">
+          <ul class="blog-posts-list">
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+                </div>
+              </a>
+            </li>      
+          </ul>
+        </section>
+      </article> -->
+
+
+
+
+
+      <!-- #CONTACT ------------------------------------------------------------------------------------------------>
+
+      <article class="contact" data-page="contact">
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+        <!-- <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d12192.441926610427!2d44.50371455546875!3d40.18111000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406ab1ce1308301d%3A0xc3f5c78668748d56!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section> -->
+
+        <section class="contact-form">
+          <h3 class="h3 form-title">Contact Form</h3>
+          <form action="https://formspree.io/f/xojqdprb" method="POST" class="form" data-form>
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </section>
+      </article>
+    </div>
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="js/script.js"></script>
 
     <div id="easter-egg-overlay" class="hidden-overlay">
         <div class="map-container">
@@ -447,5 +472,10 @@
         <source src="./assets/audio/shepor.mp3" type="audio/mpeg">
     </audio>
 
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
