@@ -7,22 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
 
-  <!-- <link rel="shortcut icon" href="./assets/img/48540.png" type="image/x-icon"> -->
-  <link rel="stylesheet" href="./css/style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
   <link rel="icon" href="./assets/img/48540.png" type="image/png">
-    <link rel="apple-touch-icon" href="./assets/img/48540.png>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="EProfit 7.5">
-    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJkZWZhdWx0X2xvY2FsZSI6ICJoeSIsCiAgInN1bW1hcnkiOiAiUHJvZml0IDcuNSUgUXVpeiIsCiAgIm5hbWUiOiAiUHJvZml0IDcuNSUgUXVpeiIsCiAgInNob3J0X25hbWUiOiAiUHJvZml0IFF1aXoiLAogICJkZXNjcmlwdGlvbiI6ICJRdWl6IGdhbWUgZm9yIHByb2ZpdCBjYWxjdWxhdGlvbnMiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2Nkbi1pY29ucy1wbmcuZmxhdGljb24uY29tLzUxMi8xOTcyLzE5NzI0MjkucG5nIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwMDAwMDAiLAogICJtIHRoZW1lX2NvbG9yIjogIiMwMDAwMDAiCn0=">
+
+<link rel="apple-touch-icon" href="./assets/img/48540.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EProfit 7.5">
+
+<link rel="manifest" href="./manifest.json">
 </head>
 
 <body>
+<script>
+  // Регистрация Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log("Service Worker Registered"));
+  }
+</script>
 
   <!-- MAIN ---------------------------------------------------------------------------------------------------------------------->
   <main>
@@ -33,11 +37,11 @@
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/img/es.jpg" alt="Erik Vardanyan" width="80">
+          <img src="./assets/img/es.jpg" alt="Erik Vardanyan " width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Erik Vardanyan">Erik Vardanyan</h1>
+          <h1 class="name" title="Erik Vardanyan">Erik Vardanyan R</h1>
 
           <p class="title">Frontend developer</p>
         </div>
@@ -357,8 +361,8 @@
         </header>
         <section class="projects">
           <ul class="project-list">
-            
-             <li class="project-item  active" data-filter-item data-category="web development">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
               <a href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -370,8 +374,8 @@
                 <p class="project-category">Web-site</p>
               </a>
             </li>
-            
-             <li class="project-item  active" data-filter-item data-category="web development">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
               <a href="https://eriikvardanyan.github.io/profit/">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -380,10 +384,10 @@
                   <img src="./assets/img/profit.png" alt="7.5% Profit quiz" loading="lazy">
                 </figure>
                 <h3 class="project-title">7.5% EProfit quiz</h3>
-                <p class="project-category">The "EProfit 7.5%" project enables users to master margin calculations, betting coefficients with speed and efficiency. An interactive analytical trainer designed for professional bettors and sportsbook analysts. Website in Armenian language. 2026y.</p>
+                <p class="project-category">The "EProfit 7.5%" project enables users to master margin calculations, betting coefficients with speed and efficiency. An interactive analytical trainer designed for professional bettors and sportsbook analysts. Website in Armenian language. 2026 y.</p>
               </a>
             </li>
-            
+
             <li class="project-item  active" data-filter-item data-category="web development">
               <a href="https://eriikvardanyan.github.io/livewiththebeatles/index.html">
                 <figure class="project-img">
@@ -393,7 +397,7 @@
                   <img src="./assets/img/The_Beatles_Photo1.png" alt="The Beatles" loading="lazy">
                 </figure>
                 <h3 class="project-title">live with The Beatles</h3>
-                <p class="project-category">An interactive tribute website dedicated to the history and legacy of The Beatles. The project features a comprehensive discography with expandable tracklists, a curated filmography, and detailed band member biographies. Website in Armenian language. 2023y.</p>
+                <p class="project-category">An interactive tribute website dedicated to the history and legacy of The Beatles. The project features a comprehensive discography with expandable tracklists, a curated filmography, and detailed band member biographies. Website in Armenian language. 2023 y.</p>
               </a>
             </li>
 
@@ -406,13 +410,23 @@
                   <img src="./assets/img/images.jpg" alt="Tolkien's Legendarium" loading="lazy">
                 </figure>
                 <h3 class="project-title">Tolkien's Legendarium</h3>
-                <p class="project-category">An interactive guide to J.R.R. Tolkien’s Legendarium designed for beginners. The project features a detailed plot overview, interactive maps, and comprehensive character biographies to help users explore the world of Middle-earth. Website in Armenian language. 2022y.</p>
+                <p class="project-category">An interactive guide to J.R.R. Tolkien’s Legendarium designed for beginners. The project features a detailed plot overview, interactive maps, and comprehensive character biographies to help users explore the world of Middle-earth. Website in Armenian language. 2023 y.</p>
               </a>
             </li>
 
-           
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://eriikvardanyan.github.io/SolarSystem/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/img/solar.jpg" alt="The Beatles" loading="lazy">
+                </figure>
+                <h3 class="project-title">Solar System</h3>
+                <p class="project-category">An interactive visualization of our solar system, designed to educate users about the planets, their characteristics, and their orbits. Website in Armenian language. 2022 y.</p>
+              </a>
+            </li>
 
-           
           </ul>
         </section>
       </article>
