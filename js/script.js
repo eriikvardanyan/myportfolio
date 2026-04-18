@@ -148,7 +148,7 @@ function createFormulas() {
     'F=ma', "♰", "֍", "֎", "֏",
   ];
 
-  const formulaCount = 500;
+  const formulaCount = 150;
 
   for (let i = 0; i < formulaCount; i++) {
     const el = document.createElement('div');
