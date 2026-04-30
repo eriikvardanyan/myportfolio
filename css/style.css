@@ -6,17 +6,17 @@
       hsla(240, 1%, 18%, 0.251) 0%,
       hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
   --bg-gradient-yellow-1: linear-gradient(to bottom right,
-      hsl(45, 100%, 71%) 0%,
-      hsla(36, 100%, 69%, 0) 50%);
+      #bd9138 0%,
+      transparent 50%);
   --bg-gradient-yellow-2: linear-gradient(135deg,
-      hsla(45, 100%, 71%, 0.251) 0%,
-      hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
+      rgba(152, 125, 72, 0.251) 0%,
+      transparent 59.86%), hsl(240, 2%, 13%);
   --border-gradient-onyx: linear-gradient(to bottom right,
       hsl(0, 0%, 25%) 0%,
       hsla(0, 0%, 25%, 0) 50%);
   --text-gradient-yellow: linear-gradient(to right,
-      hsl(45, 100%, 72%),
-      hsl(35, 100%, 68%));
+      #bd9138,
+      #bd9138);
 
   --jet: hsl(0, 0%, 22%);
   --onyx: hsl(240, 1%, 17%);
@@ -25,8 +25,8 @@
   --smoky-black: hsl(0, 0%, 7%);
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
+  --orange-yellow-crayola: #bd9138;
+  --vegas-gold: #bd9138;
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
@@ -352,11 +352,63 @@ main {
   gap: 15px;
 }
 
+/* Изменения для аватарки */
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  position: relative;
 }
+
+/* Улучшенное увеличение: без фиксированного scale, только max-width/height */
+.avatar-box.zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* только центрирование, без масштабирования */
+  z-index: 100001;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.avatar-box.zoomed img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.avatar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+.avatar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .info-content .name {
   color: var(--white-2);
@@ -364,6 +416,27 @@ main {
   font-weight: var(--fw-500);
   letter-spacing: -0.25px;
   margin-bottom: 10px;
+}
+
+/* Стили для кнопки глаза */
+.eye-toggle-btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.eye-toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+.eye-toggle-btn ion-icon {
+  display: block;
 }
 
 .info-content .title {
@@ -374,6 +447,9 @@ main {
   width: max-content;
   padding: 3px 12px;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .info_more-btn {
@@ -413,6 +489,30 @@ main {
 .info_more-btn span {
   display: none;
 }
+
+/* Подсказка клика для мобильных */
+.info_more-btn::after {
+  content: "Click!";
+  position: absolute;
+  top: -25px;
+  right: 0;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 8px;
+  animation: pulseClick 1.5s infinite;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes pulseClick {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 
 .sidebar-info_more {
   opacity: 0;
@@ -529,6 +629,7 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  text-align: justify;
 }
 
 .about-text p {
@@ -810,6 +911,12 @@ main {
   margin-bottom: 30px;
 }
 
+
+
+
+
+/* education and experience */
+
 .timeline {
   margin-bottom: 30px;
 }
@@ -830,8 +937,31 @@ main {
   position: relative;
 }
 
-.timeline-item:not(:last-child) {
-  margin-bottom: 20px;
+/* Исправление золотой линии для первого (и последнего) элемента */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -30px;
+  width: 1px;
+  height: calc(100% + 50px);
+  background: var(--jet);
+}
+
+.timeline-item:last-child::before {
+  height: 30px;
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  height: 6px;
+  width: 6px;
+  background: var(--text-gradient-yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--jet);
 }
 
 .timeline-item-title {
@@ -846,26 +976,8 @@ main {
   line-height: 1.6;
 }
 
-.timeline-item:not(:last-child)::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  left: -30px;
-  width: 1px;
-  height: calc(100% + 50px);
-  background: var(--jet);
-}
-
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: -33px;
-  height: 6px;
-  width: 6px;
-  background: var(--text-gradient-yellow);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--jet);
+.timeline-item:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .timeline-text {
@@ -1204,6 +1316,12 @@ main {
   filter: grayscale(1) invert(1);
 }
 
+.mapbox img {
+  width: 100%;
+  height: 370px;
+  object-fit: cover;
+}
+
 .contact-form {
   margin-bottom: 10px;
 }
@@ -1306,6 +1424,38 @@ textarea.form-input::-webkit-resizer {
   background: var(--bg-gradient-jet);
 }
 
+/* FOOTER -------------------------------------------------------------------------------------------*/
+/* ИЗМЕНЕНО: Центрирование и ограничение по ширине контента (max-width: 1200px) */
+.site-footer {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 40px;
+  margin: -60px auto 0;
+  text-align: center;
+  box-shadow: var(--shadow-1);
+  margin-bottom: 60px;
+  cursor: pointer;
+  transition: var(--transition-1);
+  max-width: 1200px;
+  width: calc(100% - 24px);
+}
+
+.site-footer p {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  transition: var(--transition-1);
+}
+
+/* .site-footer:hover {
+  border-color: var(--orange-yellow-crayola);
+} */
+
+.site-footer:hover p {
+  color: var(--orange-yellow-crayola);
+}
+
 /* RESPONSIVE -------------------------------------------------------------------------------------------*/
 
 @media (min-width: 450px) {
@@ -1330,6 +1480,11 @@ textarea.form-input::-webkit-resizer {
     --fs-6: 15px;
     --fs-7: 15px;
     --fs-8: 12px;
+  }
+
+  /* Скрытие мобильной подсказки на ПК */
+  .info_more-btn::after {
+    display: none;
   }
 
   .sidebar,
@@ -1535,11 +1690,14 @@ textarea.form-input::-webkit-resizer {
     min-width: calc(33.33% - 35px);
   }
 
+  /* timeline */
+
   .timeline-list {
     margin-left: 65px;
   }
 
-  .timeline-item:not(:last-child)::before {
+  /* Исправление золотой линии для медиа-запроса */
+  .timeline-item::before {
     left: -40px;
   }
 
@@ -1549,7 +1707,7 @@ textarea.form-input::-webkit-resizer {
     left: -43px;
   }
 
-  .skills-item:not(:last-child) {
+   .skills-item:not(:last-child) {
     margin-bottom: 25px;
   }
 
@@ -1591,6 +1749,12 @@ textarea.form-input::-webkit-resizer {
 
   .form-btn ion-icon {
     font-size: 18px;
+  }
+
+  /* FOOTER adjustments for min-width:580px */
+  .site-footer {
+    width: 520px;
+    margin-top: -16px;
   }
 
 }
@@ -1669,6 +1833,12 @@ textarea.form-input::-webkit-resizer {
     margin-left: auto;
   }
 
+  /* FOOTER adjustments for min-width:768px */
+  .site-footer {
+    width: 700px;
+    margin-top: -16px;
+  }
+
 }
 
 @media (min-width: 1024px) {
@@ -1738,6 +1908,12 @@ textarea.form-input::-webkit-resizer {
 
   .blog-banner-box {
     height: 230px;
+  }
+
+  /* FOOTER adjustments for min-width:1024px */
+  .site-footer {
+    width: 950px;
+    margin-top: -16px;
   }
 
 }
@@ -1854,6 +2030,13 @@ textarea.form-input::-webkit-resizer {
 
   .timeline-text {
     max-width: 700px;
+  }
+
+  /* FOOTER adjustments for min-width:1250px */
+  .site-footer {
+    width: auto;
+    max-width: 1200px;
+    margin-top: -16px;
   }
 
 }
