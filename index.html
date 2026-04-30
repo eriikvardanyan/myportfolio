@@ -32,6 +32,8 @@
   <main>
 
     <div class="formulas-background"> </div>
+    <!-- Слой затемнения для увеличенной аватарки -->
+    <div class="avatar-overlay" data-avatar-overlay></div>
 
     <!-- SIDEBAR ------------------------------------------------------------------------------------------------------------------>
     <aside class="sidebar" data-sidebar>
@@ -40,10 +42,18 @@
           <img src="./assets/img/es.jpg" alt="Erik Vardanyan " width="80">
         </figure>
 
-        <div class="info-content">
+        <div class="info-content" >
           <h1 class="name" title="Erik Vardanyan">Erik Vardanyan R</h1>
 
-          <p class="title">Frontend developer</p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <p class="title">Frontend developer</p>
+            <!-- Eye button: closed by default, toggles visibility of .main-content and footer -->
+            <button class="eye-toggle-btn" id="eyeToggleBtn" aria-label="Toggle visibility of main content and footer">
+              <ion-icon name="eye-off-outline" style="font-size: 1.5rem; color: #bd9138;"></ion-icon>
+            </button>
+          </div>
+
+          
         </div>
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
@@ -171,7 +181,7 @@
           <ul class="service-list">
             <li class="service-item">
               <div class="service-icon-box">
-                <ion-icon name="phone-portrait-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+                <ion-icon name="phone-portrait-outline" style="font-size: 40px; color: #bd9138"></ion-icon>
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Web development</h4>
@@ -183,7 +193,7 @@
 
             <li class="service-item">
               <div class="service-icon-box">
-                <ion-icon name="code-slash-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+                <ion-icon name="code-slash-outline" style="font-size: 40px; color: #bd9138"></ion-icon>
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Mobile apps</h4>
@@ -195,7 +205,7 @@
 
             <li class="service-item">
               <div class="service-icon-box">
-                <ion-icon name="camera-outline" style="font-size: 40px; color: hsl(45, 100%, 71%)"></ion-icon>
+                <ion-icon name="camera-outline" style="font-size: 40px; color: #bd9138"></ion-icon>
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Photography</h4>
@@ -470,14 +480,12 @@
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
-        <!-- <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d12192.441926610427!2d44.50371455546875!3d40.18111000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406ab1ce1308301d%3A0xc3f5c78668748d56!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section> -->
 
+        <section class="mapbox" data-mapbox>
+          
+            <img src="./assets/img/erevan.png" alt="Mapbox map" class="mapbox-img">
+         
+        </section>
         <section class="contact-form">
           <h3 class="h3 form-title">Contact Form</h3>
           <form action="https://formspree.io/f/xojqdprb" method="POST" class="form" data-form>
@@ -493,9 +501,14 @@
           </form>
         </section>
       </article>
+      
     </div>
   </main>
 
+  <!-- Тот самый Footer перемещенный под все панели -->
+  <footer class="site-footer" data-fireworks-btn>
+    <p>© Website by Erik Vardanyan, 2026.</p>
+  </footer>
 
 
 
