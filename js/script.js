@@ -131,21 +131,12 @@ function createFormulas() {
   const bgContainer = document.querySelector('.formulas-background');
   if (!bgContainer) return;
 
-  // const formulas = [
-  //     'E = mc²', 'a = v / t', 'v = √2gh', 'F = ma', 'F = kx',
-  //     'F = G(Mm) / r²', 'F = mg', 'p = ρgh', 'F = ρgV', 'p = mv',
-  //     'E = mv² / 2', 'E = mgh', 'Q = C(t₂ - t₁)', 'λ = h / mv',
-  //     'λ = q / L', 'U = Δφ = φ₁ - φ₂', 'I = q / t', 'I = U /R',
-  //     'E = hv = hc / λ', 'F = G(Mm) / r²', 
-  //     'սեխմիր "F=ma"', "𐎠𐎼𐎷𐎡𐎴", "♰֎Է",
-  // ];
-
   const formulas = [
     'Ա', 'Բ', 'Գ', 'Դ', 'Ե', 'Զ', 'Է', 'Ը', 'Թ', 'Ժ',
     'Ի', 'Լ', 'Խ', 'Ծ', 'Կ', 'Հ', 'Ձ', 'Ղ', 'Ճ', 'Մ',
     'Յ', 'Ն', 'Շ', 'Ո', 'Չ', 'Պ', 'Ջ', 'Ռ', 'Ս', 'Վ',
     'Տ', 'Ր', 'Ց', 'Ւ', 'Փ', 'Ք', 'Օ', 'Ֆ', 'և',
-    'F=ma', "♰", "֍", "֎", "֏",
+    'F=ma', "♰", "֍", "֎", "֏", "0", "1", "</>", 
   ];
 
   const formulaCount = 150;
@@ -155,18 +146,14 @@ function createFormulas() {
     el.classList.add('formula');
     el.textContent = formulas[Math.floor(Math.random() * formulas.length)];
 
-    // Պատահական դիրքավորում
     el.style.left = `${Math.random() * 100}%`;
     el.style.top = `${Math.random() * 100}%`;
 
-    // Պատահական չափս
     const scale = 0.8 + Math.random() * 1.5;
     el.style.fontSize = `${scale}rem`;
 
-    // Պատահական թափանցիկություն
     el.style.opacity = 0.2 + Math.random() * 0.5;
 
-    // Պատահական անիմացիայի տևողություն և հապաղում
     const duration = 10 + Math.random() * 20;
     const delay = Math.random() * -20;
 
@@ -257,4 +244,93 @@ function activateEasterEgg() {
     });
     easterEggCode = "";
   }, 15000);
+}
+
+/* --- Avatar Zoom (исправлено: красивое увеличение без фиксированного scale) ------------------------------------------------------------------------------------------------------ --- */
+const avatarBoxNode = document.querySelector(".avatar-box");
+const avatarOverlayNode = document.querySelector("[data-avatar-overlay]");
+
+if (avatarBoxNode && avatarOverlayNode) {
+  const toggleZoom = () => {
+    avatarBoxNode.classList.toggle("zoomed");
+    avatarOverlayNode.classList.toggle("active");
+  };
+  avatarBoxNode.addEventListener("click", toggleZoom);
+  avatarOverlayNode.addEventListener("click", toggleZoom);
+}
+
+/* --- Fireworks on Footer Click (Изменение 3) ------------------------------------------------------------------------------------------------------ --- */
+function createExplosion(x, y, colors) {
+  for(let i=0; i<30; i++) {
+    const p = document.createElement('div');
+    p.style.position = 'fixed';
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    p.style.width = '6px';
+    p.style.height = '6px';
+    p.style.borderRadius = '50%';
+    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    p.style.pointerEvents = 'none';
+    p.style.zIndex = '999999';
+    document.body.appendChild(p);
+
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = Math.random() * 100 + 50;
+    const tx = Math.cos(angle) * velocity;
+    const ty = Math.sin(angle) * velocity;
+
+    p.animate([
+        { transform: 'translate(0,0) scale(1.5)', opacity: 1 },
+        { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+    ], {
+        duration: 800 + Math.random() * 400,
+        easing: 'ease-out'
+    }).onfinish = () => p.remove();
+  }
+}
+
+const footerBtnNode = document.querySelector('[data-fireworks-btn]');
+if(footerBtnNode) {
+  footerBtnNode.addEventListener('click', function(e) {
+    const colors = ['#D90012', '#0033A0', '#F2A800'];
+    const duration = 5000;
+    const end = Date.now() + duration;
+
+    const interval = setInterval(() => {
+        if(Date.now() > end) {
+            clearInterval(interval);
+            return;
+        }
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.8;
+        createExplosion(x, y, colors);
+    }, 300);
+  });
+}
+
+/* --- Eye Toggle (Функция: скрытие/показ main-content и footer) ------------------------------------------------------------------------------------------------------ --- */
+const eyeBtn = document.getElementById('eyeToggleBtn');
+const mainContent = document.querySelector('.main-content');
+const siteFooter = document.querySelector('.site-footer');
+
+if (eyeBtn && mainContent && siteFooter) {
+  let isHidden = false;
+  const eyeIcon = eyeBtn.querySelector('ion-icon');
+  
+  const toggleVisibility = () => {
+    if (isHidden) {
+      // Show elements
+      mainContent.style.visibility = 'visible';
+      siteFooter.style.visibility = 'visible';
+      eyeIcon.setAttribute('name', 'eye-off-outline');
+    } else {
+      // Hide elements
+      mainContent.style.visibility = 'hidden';
+      siteFooter.style.visibility = 'hidden';
+      eyeIcon.setAttribute('name', 'eye-outline');
+    }
+    isHidden = !isHidden;
+  };
+  
+  eyeBtn.addEventListener('click', toggleVisibility);
 }
