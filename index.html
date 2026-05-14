@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Erik Vardanyan Portfolio</title>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -49,7 +49,7 @@
             <p class="title">Frontend developer</p>
             <!-- Eye button: closed by default, toggles visibility of .main-content and footer -->
             <button class="eye-toggle-btn" id="eyeToggleBtn" aria-label="Toggle visibility of main content and footer">
-              <ion-icon name="eye-off-outline" style="font-size: 1.5rem; color: #bd9138;"></ion-icon>
+              <ion-icon name="eye-off-outline" style="font-size: 1.5rem; color: #bd9138; background: var(--onyx); border-radius: 8px; padding: 1px 2px;"></ion-icon>
             </button>
           </div>
 
@@ -124,12 +124,17 @@
               <ion-icon name="paper-plane-outline"></ion-icon>
             </a>
           </li>
+          <li class="social-item">
+  <button class="social-link easter-btn" id="openEasterModal">
+    <ion-icon name="sparkles-outline"></ion-icon>
+  </button>
+</li>
         </ul>
       </div>
     </aside>
 
     <!-- #main-content -->
-    <div class="main-content">
+    <div class="main-content"> 
 
       <!-- #NAVBAR ---------------------------------------------------------------------------------------------------------------->
       <nav class="navbar">
@@ -439,7 +444,7 @@
 
           </ul>
         </section>
-      </article>
+      </article> 
 
       <!-- #BLOG -->
       <!-- <article class="blog" data-page="blog">
@@ -517,6 +522,43 @@
   <!--
     - custom js link
   -->
+  <!-- Easter Egg Modal -->
+<div class="secret-modal-overlay" id="secretModalOverlay">
+  <div class="secret-modal">
+
+    <p class="secret-text second">
+      1․ «Իմ հոգին զոյգ յենարաններ ունի' Աստված եւ Հայրենիք»
+    </p>
+
+    <p class="secret-text">
+      2․ «Մարմնի վրա ազդող ուժի ազդեցությամբ նրա ձեռք բերած արագացումը հավասար է այդ ուժի և մարմնի զանգվածի հարաբերությանը»
+    </p>
+
+
+
+    <form class="secret-form" id="secretForm">
+      <input 
+        type="text" 
+        id="secretInput" 
+        class="secret-input"
+        placeholder="..."
+        autocomplete="off"
+      >
+    </form>
+
+  </div>
+</div>
+
+<!-- Secret Video -->
+<div class="secret-video-overlay" id="secretVideoOverlay">
+  <video 
+    id="secretVideo"
+    class="secret-video"
+    src="./assets/img/document_5201822036795631518.mp4"
+    controls
+  ></video>
+</div>
+
   <script src="js/script.js"></script>
 
     <div id="easter-egg-overlay" class="hidden-overlay">
