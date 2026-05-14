@@ -2154,3 +2154,159 @@ textarea.form-input::-webkit-resizer {
         transform: scale(1);
     }
 }
+
+/* ---------------- SECRET MODAL ---------------- */
+
+.secret-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+.secret-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.secret-modal {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 24px;
+  padding: 35px 25px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  animation: secretPopup 0.3s ease;
+}
+
+@keyframes secretPopup {
+  from {
+    transform: translateY(-40px) scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.secret-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--onyx);
+  color: var(--orange-yellow-crayola);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+.secret-close-btn:hover {
+  transform: scale(1.05);
+}
+
+.secret-title {
+  color: var(--orange-yellow-crayola);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.secret-text {
+  color: var(--light-gray);
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.secret-text.second {
+  margin-bottom: 30px;
+}
+
+.secret-form {
+  width: 100%;
+}
+
+.secret-input {
+  width: 100%;
+  height: 55px;
+  border-radius: 16px;
+  border: 1px solid var(--jet);
+  background: var(--onyx);
+  color: white;
+  padding: 0 20px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.secret-input:focus {
+  border-color: var(--orange-yellow-crayola);
+}
+
+/* ---------------- SECRET VIDEO ---------------- */
+
+.secret-video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+.secret-video-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.secret-video {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+/* ---------------- AVATAR FIX DESKTOP ---------------- */
+
+@media (min-width: 768px) {
+
+  .avatar-box.zoomed {
+    top: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    max-width: 700px;
+    max-height: 90vh;
+
+    align-items: flex-start;
+
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .avatar-box.zoomed img {
+    max-height: unset;
+  }
+
+}
