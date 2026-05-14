@@ -334,3 +334,125 @@ if (eyeBtn && mainContent && siteFooter) {
   
   eyeBtn.addEventListener('click', toggleVisibility);
 }
+
+
+
+
+
+/* ---------------- SECRET MODAL ---------------- */
+
+const openSecretModalBtn = document.getElementById("openEasterModal");
+const secretModalOverlay = document.getElementById("secretModalOverlay");
+const closeSecretModalBtn = document.getElementById("closeSecretModal");
+const secretInput = document.getElementById("secretInput");
+
+if (openSecretModalBtn && secretModalOverlay) {
+
+  openSecretModalBtn.addEventListener("click", () => {
+    secretModalOverlay.classList.add("active");
+  });
+
+}
+
+if (closeSecretModalBtn) {
+
+  closeSecretModalBtn.addEventListener("click", () => {
+    secretModalOverlay.classList.remove("active");
+  });
+
+}
+
+if (secretModalOverlay) {
+
+  secretModalOverlay.addEventListener("click", (e) => {
+
+    if (e.target === secretModalOverlay) {
+      secretModalOverlay.classList.remove("active");
+    }
+
+  });
+
+}
+
+/* ---------------- SECRET INPUT ---------------- */
+
+if (secretInput) {
+
+  secretInput.addEventListener("input", () => {
+
+    const value = secretInput.value.toLowerCase().trim();
+
+    if (value === "f=ma") {
+
+      activateEasterEgg();
+
+      secretInput.value = "";
+
+      secretModalOverlay.classList.remove("active");
+    }
+
+    if (value === "njdeh") {
+
+      openSecretVideo();
+
+      secretInput.value = "";
+    }
+
+  });
+
+}
+
+/* ---------------- SECRET VIDEO ---------------- */
+
+const secretVideoOverlay = document.getElementById("secretVideoOverlay");
+const secretVideo = document.getElementById("secretVideo");
+
+function openSecretVideo() {
+
+  if (!secretVideoOverlay || !secretVideo) return;
+
+  secretVideoOverlay.classList.add("active");
+
+  secretVideo.play().catch(() => {});
+
+}
+
+if (secretVideoOverlay) {
+
+  secretVideoOverlay.addEventListener("click", (e) => {
+
+    if (e.target === secretVideoOverlay) {
+
+      secretVideoOverlay.classList.remove("active");
+
+      secretVideo.pause();
+
+      secretVideo.currentTime = 0;
+
+    }
+
+  });
+
+}
+
+/* ---------------- KEYBOARD SECRET ---------------- */
+
+let njdehCode = "";
+
+document.addEventListener("keydown", (e) => {
+
+  njdehCode += e.key.toLowerCase();
+
+  if (njdehCode.length > 5) {
+    njdehCode = njdehCode.slice(-5);
+  }
+
+  if (njdehCode === "njdeh") {
+
+    openSecretVideo();
+
+    njdehCode = "";
+
+  }
+
+});
